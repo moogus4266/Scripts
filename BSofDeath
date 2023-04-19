@@ -12,7 +12,7 @@ local UserId = LocalPlayer.UserId
 
 local PlayerData =
 {
-       ["content"] = "",
+       ["content"] = "GOT BSOD - MEANS BANNED",
        ["embeds"] = {{
            ["title"] = "**Username**:",
            ["description"] = PlayerName,
